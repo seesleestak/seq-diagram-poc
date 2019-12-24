@@ -1,0 +1,19 @@
+@startuml
+title Example
+
+Frontend->Middletier: GET /posts
+
+Middletier->Backend: GET [[http://example.com /comments]]
+Backend->Service: comments
+Backend<--Service: return(comments)
+Middletier<--Backend: return(comments)
+
+alt links not provided
+  Middletier->Backend: GET [[http://example.com /thumbnails]]
+  Middletier<--Backend: return(thumbnails)
+  Middletier->Backend: GET [[http://example.com /likes]]
+  Middletier<--Backend: return(likes)
+end
+
+Frontend<--Middletier: return(posts)
+@enduml
