@@ -1,5 +1,5 @@
 @startuml
-!include ./seq-style.puml
+!include seq-style.puml
 
 title Example
 
