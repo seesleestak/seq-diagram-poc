@@ -1,0 +1,10 @@
+@startuml
+skinparam sequence {
+  ArrowColor Black
+  LifeLineBorderColor Black
+
+  ParticipantBackgroundColor #2b3d52
+  ParticipantBorderColor #2b3d52
+  ParticipantFontColor #fff
+}
+@enduml
