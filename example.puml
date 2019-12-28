@@ -1,19 +1,22 @@
 @startuml
 title Example
 
-Frontend->Middletier: GET /posts
+Frontend -> Middletier: GET /posts
 
-Middletier->Backend: GET [[http://example.com /comments]]
-Backend->Service: comments
-Backend<--Service: return(comments)
-Middletier<--Backend: return(comments)
+Middletier -> Backend: GET [[http://example.com /comments]]
+Backend -> Service: comments
+Service --> Backend: return(comments)
+Backend --> Middletier: return(comments)
 
 alt links not provided
-  Middletier->Backend: GET [[http://example.com /thumbnails]]
-  Middletier<--Backend: return(thumbnails)
-  Middletier->Backend: GET [[http://example.com /likes]]
-  Middletier<--Backend: return(likes)
+  Middletier -> Backend: GET [[http://example.com /thumbnails]]
+  Backend --> Middletier: return(thumbnails)
+  Middletier -> Backend: GET [[http://example.com /likes]]
+  Backend --> Middletier: return(likes)
+else  links provided
+    Middletier -> Backend: POST [[http://example.com /links]]
+    Backend --> Middletier: return(links)
 end
 
-Frontend<--Middletier: return(posts)
+Middletier --> Frontend: return(posts)
 @enduml
